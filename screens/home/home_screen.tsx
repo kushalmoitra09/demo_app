@@ -26,69 +26,59 @@ const HomeScreen: FC = props => {
   }, []);
 
   return (
-    <>
-      <ScrollView
-        contentContainerStyle={
-          {
-            // flex: 1,
-            // flexGrow: 1,
-            // justifyContent: 'space-between',
-            // flexDirection: 'column',
-          }
-        }
-        style={{
-          backgroundColor: 'white',
-          // padding: 16,
-          // justifyContent: 'center',
-        }}>
-        {posts.map(post => {
-          return (
-            <TouchableNativeFeedback
-              key={post['id']}
-              background={TouchableNativeFeedback.Ripple('#90CAF9', false)}
-              onPress={() => {
-                navigation.dispatch(
-                  CommonActions.navigate({
-                    name: 'PostDetailsScreen',
-                    params: {
-                      postId: post['id'],
-                    },
-                  }),
-                );
-              }}>
-              <View
-                style={{
-                  paddingHorizontal: 16,
-                  paddingVertical: 16,
-                  borderBottomColor: 'lightgrey',
-                  borderBottomWidth: 1,
-                }}
-                key={post['id']}>
-                <View style={{flexDirection: 'row'}}>
-                  <View
-                    style={{
-                      width: 48,
-                      height: 48,
-                      backgroundColor: 'gray',
-                      borderRadius: 24,
-                    }}></View>
+    <ScrollView
+      style={{
+        backgroundColor: 'white',
+        // padding: 16,
+        // justifyContent: 'center',
+      }}>
+      {posts.map(post => {
+        return (
+          <TouchableNativeFeedback
+            key={post['id']}
+            background={TouchableNativeFeedback.Ripple('#90CAF9', false)}
+            onPress={() => {
+              navigation.dispatch(
+                CommonActions.navigate({
+                  name: 'PostDetailsScreen',
+                  params: {
+                    postId: post['id'],
+                  },
+                }),
+              );
+            }}>
+            <View
+              style={{
+                paddingHorizontal: 16,
+                paddingVertical: 16,
+                borderBottomColor: 'lightgrey',
+                borderBottomWidth: 1,
+              }}
+              key={post['id']}>
+              <View style={{flexDirection: 'row'}}>
+                <View
+                  style={{
+                    width: 48,
+                    height: 48,
+                    backgroundColor: 'gray',
+                    borderRadius: 24,
+                  }}></View>
 
-                  <View style={{flex: 1, marginLeft: 16}}>
-                    <Text
-                      style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
-                      {post['title']}
-                    </Text>
-                    <Text style={{fontSize: 14, color: 'black'}}>
-                      {post['body']}
-                    </Text>
-                  </View>
+                <View style={{flex: 1, marginLeft: 16}}>
+                  <Text
+                    style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
+                    {post['title']}
+                  </Text>
+                  <Text style={{fontSize: 14, color: 'black'}}>
+                    {post['body']}
+                  </Text>
                 </View>
               </View>
-            </TouchableNativeFeedback>
-          );
-        })}
-      </ScrollView>
-    </>
+            </View>
+          </TouchableNativeFeedback>
+        );
+      })}
+    </ScrollView>
   );
 };
 
